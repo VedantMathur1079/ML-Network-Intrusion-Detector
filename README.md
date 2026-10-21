@@ -1,6 +1,7 @@
 # ML Network Intrusion Detector
 
 **Author:** Vedant Mathur
+
 **Program:** IBM SkillsBuild Cybersecurity Bootcamp 2026 (BharatCares)
 
 ## Project Overview
