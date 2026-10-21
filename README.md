@@ -1,7 +1,6 @@
 # ML Network Intrusion Detector
 
-**Author:** Vedant Mathur
-
+**Author:** Vedant Mathur  
 **Program:** IBM SkillsBuild Cybersecurity Bootcamp 2026 (BharatCares)
 
 ## Project Overview
@@ -52,6 +51,15 @@ Key findings:
 - DoS (~79%) and Probe (~73%) attacks are detected well; R2L (~5%) and U2R (~12%) are rare and very hard to detect.
 - Most important features: `src_bytes`, `dst_bytes`, `flag_SF`, `dst_host_same_srv_rate`, `dst_host_srv_count`.
 
+## Code Review with IBM Bob
+The notebook was reviewed with **IBM Bob**, which returned 15 suggestions. Each one was checked against the code:
+- **Applied:** fitting the preprocessing inside the train/validation split (no leakage) in the reality-check experiment,
+  explaining the Isolation Forest `contamination` setting and adding a sensitivity table, duplicate and missing-label checks
+  on the test data, an early note about NSL-KDD's age, and more careful wording of the conclusions.
+- **Not applied (with reason):** the reported `"land"` name collision (not a bug, the feature column and the attack name live
+  in different places), the missing `random_state` (it was already set), and cross-validation / hyperparameter search / permutation
+  importance (listed as future work to keep the project simple).
+
 ## How to Run
 
 ### Option 1: Google Colab (easiest, nothing to install)
@@ -80,4 +88,4 @@ Then run all cells from top to bottom. Graphs are saved in a `figures/` folder.
 ## Limitations and Future Work
 - NSL-KDD is an older dataset; modern traffic differs.
 - Rare attack classes (R2L, U2R) need special handling (e.g. SMOTE or class weights).
-- Future work: use CIC-IDS2017, tune models, combine supervised and anomaly detection, build a live dashboard.
+- Future work: use CIC-IDS2017, add cross-validation, tune models, combine supervised and anomaly detection, build a live dashboard.
